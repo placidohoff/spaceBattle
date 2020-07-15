@@ -31,6 +31,12 @@ class SceneMain extends Phaser.Scene{
 
         this.background.setInteractive();
         this.background.on('pointerdown', this.backgroundClicked, this)
+
+        //Add Camera object to follow ship on scrolling screen:
+            this.cameras.main.setBounds(0, 0, this.background.displayWidth, this.background.displayHeight)
+            this.cameras.main.startFollow(this.ship, true);
+            //this.cameras.main.startFollow(this.ship, true)
+
     }
     update(){
         //Measure the distance to click point to know when to stop ship:
