@@ -30,14 +30,14 @@ class SceneLoad extends Phaser.Scene{
         this.load.image("toggle6", "assets/buttons/toggles/toggles/6.png");
         
         this.load.image("spacefield", 'assets/background.jpg');
-        this.load.image("ship", 'assets/player.jpg');
+        this.load.image("ship", 'assets/player.png');
         //bar;
         // alert('hello');
     }
     create(){
         this.bar = new Bar({scene:this, x:240,y:320})
         this.bar.setPercent(.5);
-        //this.scene.start('SceneMain');
+        this.scene.start('SceneMain');
 
 
     }

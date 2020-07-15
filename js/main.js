@@ -20,6 +20,12 @@ window.onload = () => {
             width: 480,
             height: 640,
             parent: 'phaser-game',
+            physics: {
+                default: 'arcade',
+                arcade: {
+                    debug: true
+                }
+            },
             backgroundColor: '000',
             scene: [SceneLoad,SceneMain,SceneOver]
         }
@@ -32,6 +38,12 @@ window.onload = () => {
             width: window.innerWidth,
             height: window.innerHeight,
             parent: 'phaser-game',
+            physics: {
+                default: 'arcade',
+                arcade: {
+                    debug: true
+                }
+            },
             backgroundColor: '000',
             scene: [SceneLoad, SceneMain, SceneOver]
         }

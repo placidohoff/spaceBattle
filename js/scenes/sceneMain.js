@@ -4,7 +4,8 @@ class SceneMain extends Phaser.Scene{
     }
 
     preload(){
-                
+        this.centerX = game.config.width /2;
+        this.centerY = game.config.height /2;
     }
     create(){
         emitter = new Phaser.Events.EventEmitter();
@@ -14,19 +15,23 @@ class SceneMain extends Phaser.Scene{
         // mediaManager.setBackgroundMusic('backgroundMusic')
 
         let sb = new SoundButtons({scene: this});
-        
+
+        //Since the ship has physics on it, notice the difference:
+        this.background = this.add.image(0,0,'spacefield')
+        this.background.setOrigin(0,0)
+        this.ship = this.physics.add.sprite(this.centerX, this.centerY, 'ship');
+
+        this.background.setInteractive();
+        this.background.on('pointerdown', this.backgroundClicked, this)
     }
     update(){
 
     }
-    buttonPressed(params){
-        model._musicOn ? model._musicOn = false : model._musicOn = true
-        console.log(model._musicOn)
-        emitter.emit(G.MUSIC_CHANGED, this)
-        //model._musicOn = !model._musicOn;
-        //emitter.emit(G.PLAY_SOUND, 'cat');
-        if(params == 'button2'){
-            this.scene.start('SceneOver');
-        }
+    backgroundClicked(){
+        let tx = this.background.input.localX;
+        let ty = this.background.input.localY;
+
+        this.physics.moveTo(this.ship, tx, ty, 60);
     }
+    
 }
