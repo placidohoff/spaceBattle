@@ -31,7 +31,12 @@ class SceneMain extends Phaser.Scene{
         let tx = this.background.input.localX;
         let ty = this.background.input.localY;
 
-        this.physics.moveTo(this.ship, tx, ty, 60);
+        let angle = this.physics.moveTo(this.ship, tx, ty, 90);
+        angle = this.toDegrees(angle)
+        this.ship.angle = angle;
+    }
+    toDegrees(angle){
+        return angle * (180 / Math.PI);
     }
     
 }
